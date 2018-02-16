@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
+import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
@@ -21,6 +22,8 @@ import Drawer from 'material-ui/Drawer';
 import List from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Grid from 'material-ui/Grid';
+import NavBarDrawer from './drawer';
+import font from '../font.js';
 
 const styles = theme => {
   return {
@@ -40,18 +43,21 @@ class NavBarPresentation extends Component {
           <Toolbar>
             <Grid container spacing={0} justify="space-between">
               <Grid item>
+                <NavBarDrawer />
+              </Grid>
+              <Grid item style={{alignSelf: 'center'}}>
                 <Typography
                   variant={isAuth ? 'title' : 'display4'}
                   color="primary"
-                  style={{ paddingTop: isAuth ? 4 : 0 }}
+                  style={{ paddingTop: isAuth ? 4 : 0, ...font }}
                 >
                   Eviluators Instructor View
                 </Typography>
               </Grid>
-              <Grid item>
+              <Grid item style={{alignSelf: 'center'}}>
                 {isAuth && (
                   <div>
-                    <Button onClick={this.props.logout}>Logout</Button>
+                    <Button style={font}onClick={this.props.logout}>Logout</Button>
                   </div>
                 )}
               </Grid>
