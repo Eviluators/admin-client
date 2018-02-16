@@ -75,7 +75,15 @@ class NavBarDrawer extends Component {
                   onKeyPress={(e) => e.key === 'Enter' ? this.submitSearch(e) : null}
                 />
               </ListItem>
-              {/* can put more list items here */}
+              {/* can put more list items here like this. maybe map out list of classes
+                <ListItem>
+                  <ListItemText primary="text"/>
+                  <IconButton>
+                    <SomeIcon/>
+                  </IconButton>
+                </ListItem>
+              */
+              }
             </List>
           </Drawer>
       </React.Fragment>

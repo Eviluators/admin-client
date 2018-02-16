@@ -1,4 +1,3 @@
 export default {
-  fontFamily: 'Special Elite',
-  fontStyle: 'cursive'
+  fontFamily: 'Special Elite, cursive'
 }
