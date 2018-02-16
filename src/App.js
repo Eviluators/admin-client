@@ -5,6 +5,7 @@ import NavBar from './navBar/container';
 import RegistrationForm from './auth/registration/registrationForm';
 import LoginForm from './auth/login/loginForm';
 import MainPage from './mainPage/container';
+import StudentAssignment from './mainPage/student/assignment/container';
 
 const App = () => {
   return (
@@ -14,6 +15,10 @@ const App = () => {
         <Route exact path="/" component={RequireAuth(MainPage)} />
         <Route path="/login" component={LoginForm} />
         <Route path="/register" component={RegistrationForm} />
+        <Route
+          path="/student/assignment"
+          component={RequireAuth(StudentAssignment)}
+        />
       </Switch>
     </div>
   );
