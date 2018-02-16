@@ -8,7 +8,7 @@ const StudentPresentation = props => {
   return (
     <div>
       <Typography variant="display3" color="primary">
-        {this.props.class}
+        {props.class}
       </Typography>
       <Grid container>
         <Grid item />
