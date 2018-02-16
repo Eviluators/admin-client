@@ -2,21 +2,30 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import reduxPromise from 'redux-promise';
 import { persistStore } from 'redux-persist';
-import reduxAPI from './reduxAPI';
 //
 
-// TODO: Import component reducers
-import auth from '../auth';
-import common from '../common';
-// Combine component reducers
-const combinedReducers = combineReducers({ common, auth, routerReducer });
+// Import component reducers
+import login from '../auth/login';
+import authStore from '../auth/store';
+import authAsync from '../auth/async';
+import mainStore from '../mainPage/store';
+import mainAsync from '../mainPage/async';
+
+// Combine component reducers (states)
+const combinedReducers = combineReducers({
+  login,
+  authStore,
+  mainStore,
+  routerReducer
+});
 
 export default history => {
   const routerHistory = routerMiddleware(history);
   const createStoreWithMiddleware = applyMiddleware(
     routerHistory,
     reduxPromise,
-    reduxAPI
+    authAsync,
+    mainAsync
   )(createStore);
   const store = createStoreWithMiddleware(
     combinedReducers,

@@ -1,17 +1,21 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
+import RequireAuth from './auth/requireAuth';
+import NavBar from './navBar/container';
 import RegistrationForm from './auth/registration/registrationForm';
 import LoginForm from './auth/login/loginForm';
-
-import Typography from 'material-ui/Typography';
+import MainPage from './mainPage/container';
 
 const App = () => {
   return (
     <div>
-      <Typography type="display4">Insert NavBar here</Typography>
-      <Route exact path="/" component={LoginForm} />
-      <Route path="/new-user-registration" component={RegistrationForm} />
+      <NavBar />
+      <Switch>
+        <Route exact path="/" component={RequireAuth(MainPage)} />
+        <Route path="/login" component={LoginForm} />
+        <Route path="/register" component={RegistrationForm} />
+      </Switch>
     </div>
   );
 };

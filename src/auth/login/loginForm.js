@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
@@ -9,12 +10,15 @@ import Paper from 'material-ui/Paper';
 import Typography from 'material-ui/Typography';
 
 import { loginFormInput, loginFormErrors } from './index';
-import { apiPostAuthLogin } from '../../redux/reduxAPI';
+// import { apiPostAuthLogin } from '../../redux/reduxAPI';
+import { login } from '../async';
 
 import { validateForm, validateField } from './validateLogin';
 
 const LoginForm = props => {
-  const { form, loginFormInput, loginFormErrors, apiPostAuthLogin } = props;
+  const { form, loginFormInput, loginFormErrors, login } = props;
+
+  // if (props.auth.isAuth) props.push('/');
 
   const submitHandler = e => {
     e.preventDefault();
@@ -27,20 +31,24 @@ const LoginForm = props => {
       },
       {}
     );
-    apiPostAuthLogin(postForm);
+    login(postForm);
   };
 
   const changeHandler = e => {
     const { name, value } = e.target;
     loginFormInput(validateField(name, value));
   };
-
+  const registerHandler = () => {
+    props.push('/register');
+  };
   return (
     <Paper>
       <form onSubmit={submitHandler}>
         <Grid container alignItems="center" direction="row" justify="center">
           <Grid item xs={10} sm={8}>
-            <Typography type="display1">Login</Typography>
+            <Typography variant="display1" color="secondary">
+              Login
+            </Typography>
           </Grid>
           <Grid item xs={10} sm={8}>
             <TextField
@@ -66,12 +74,23 @@ const LoginForm = props => {
           <Grid item xs={10} sm={8}>
             <Button
               type="submit"
-              raised={true}
+              variant="raised"
               color="primary"
               onClick={submitHandler}
               style={{ width: '100%' }}
             >
               Login
+            </Button>
+          </Grid>
+          <Grid item xs={10} sm={8}>
+            <Button
+              type="submit"
+              variant="raised"
+              color="primary"
+              onClick={registerHandler}
+              style={{ width: '100%' }}
+            >
+              Register
             </Button>
           </Grid>
         </Grid>
@@ -81,11 +100,13 @@ const LoginForm = props => {
 };
 
 const mapStateToProps = state => ({
-  form: state.auth.login
+  form: state.login,
+  auth: state.authStore
 });
 
 export default connect(mapStateToProps, {
+  push,
   loginFormInput,
-  apiPostAuthLogin,
+  login,
   loginFormErrors
 })(LoginForm);

@@ -1,12 +1,12 @@
 import { createMuiTheme } from 'material-ui/styles';
-import cyan from 'material-ui/colors/cyan';
-import purple from 'material-ui/colors/purple';
-import deepPurple from 'material-ui/colors/deepPurple';
+import green from 'material-ui/colors/green';
+import orange from 'material-ui/colors/orange';
+import grey from 'material-ui/colors/grey';
 const theme = {
   palette: {
-    primary: cyan,
-    secondary: deepPurple,
-    error: purple,
+    primary: green,
+    secondary: grey,
+    error: orange,
     type: 'dark' // Switch between dark and light modes
   }
 };

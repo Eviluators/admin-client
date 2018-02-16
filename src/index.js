@@ -9,7 +9,6 @@ import { ConnectedRouter } from 'react-router-redux';
 // Import Material_UI themeing
 import { MuiThemeProvider } from 'material-ui/styles';
 import theme from './theme';
-import 'typeface-roboto';
 
 // Import base App component
 import App from './App';

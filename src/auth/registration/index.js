@@ -15,15 +15,26 @@ export const registrationFormErrors = form => ({
   payload: form
 });
 
+const REGISTRATION_FORM_CLEAR = 'REGISTRATION_FORM_CLEAR';
+export const registrationFormClear = () => ({
+  type: REGISTRATION_FORM_CLEAR
+});
+
 const initState = {
   firstName: {},
   lastName: {},
   email: {},
   password: {},
-  confirmPassword: {}
+  confirmPassword: {},
+  passphrase: {}
 };
 export default (state = initState, { type, payload }) => {
   switch (type) {
+    case REGISTRATION_FORM_CLEAR:
+      return Object.keys(state).reduce((r, k) => {
+        r[k] = {};
+        return r;
+      }, {});
     case REGISTRATION_FORM_ERRORS:
       return payload;
     case REGISTRATION_FORM_INPUT:

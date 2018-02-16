@@ -2,21 +2,6 @@ import isEmail from 'validator/lib/isEmail';
 import passwordStrengthTest from 'owasp-password-strength-test';
 
 const registrationFieldValidator = {
-  validateFirstName: (firstName = '') => {
-    firstName = { value: firstName };
-    if (!firstName.value) {
-      firstName.error = 'First name is required';
-    }
-    return { firstName };
-  },
-
-  validateLastName: (lastName = '') => {
-    lastName = { value: lastName };
-    if (!lastName.value) {
-      lastName.error = 'Last name is required';
-    }
-    return { lastName };
-  },
   validateEmail: (email = '') => {
     email = { value: email };
     if (email.value && !isEmail(email.value)) {
@@ -60,11 +45,6 @@ const registrationFieldValidator = {
 export const validateForm = form => {
   let hasErrors = false;
   const validatedForm = {
-    firstName: registrationFieldValidator.validateFirstName(
-      form.firstName.value
-    ).firstName,
-    lastName: registrationFieldValidator.validateLastName(form.lastName.value)
-      .lastName,
     email: registrationFieldValidator.validateEmail(form.email.value).email,
     password: registrationFieldValidator.validatePassword(form.password.value)
       .password,
