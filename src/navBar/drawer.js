@@ -27,7 +27,6 @@ class NavBarDrawer extends Component {
     this.search = this.search.bind(this);
   }
   componentDidMount() {
-    console.log(this.props);
   }
   openMenu() {
     this.setState({ open: true });
@@ -40,7 +39,6 @@ class NavBarDrawer extends Component {
     console.log(this.props);
   }
   submitSearch(e) {
-    e.target.blur();
     this.search();
     this.closeMenu();
   }
