@@ -5,11 +5,15 @@ class StudentAssignment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mockAssignments: []
+      mockAssignments: ['Introduction to Git', 'Introduction to JS', 'JS II', 'JS III', 'JS IV']
     };
   }
   render() {
-    return <StudentAssignmentPresentation assignments={this.mockAssignments} />;
+    return (
+      <div>
+        <StudentAssignmentPresentation assignments={this.state.mockAssignments} />
+      </div>
+    );
   }
 }
 
