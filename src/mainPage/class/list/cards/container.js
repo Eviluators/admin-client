@@ -6,7 +6,7 @@ class ClassListCards extends Component {
     super(props);
   }
   render() {
-    return <ClassListCardsPresentation />;
+    return <ClassListCardsPresentation {...this.props} />;
   }
 }
 

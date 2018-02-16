@@ -16,6 +16,7 @@ class MainPage extends Component {
     // this.props.getTestResults();
   }
   render() {
+    console.log('card container', this.state.mockClasses);
     return (
       <div>
         <ClassListCards classes={this.state.mockClasses} />
